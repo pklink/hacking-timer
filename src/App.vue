@@ -29,8 +29,10 @@
 </template>
 
 <script>
+    import store from 'store'
     import InfoFooter from './components/InfoFooter'
     import Portal from './components/Portal'
+    import portalFactory from './modules/PortalFactory'
     import PortalModel from './models/Portal'
 
     export default {
@@ -38,9 +40,12 @@
         components: {
             InfoFooter, Portal
         },
+        created() {
+            store.set('portals', this.portals)
+        },
         data() {
             return {
-                portals: [new PortalModel()]
+                portals: portalFactory.get()
             }
         },
         methods: {
@@ -49,6 +54,14 @@
             },
             remove(portal) {
                 this.portals = this.portals.filter(p => p !== portal)
+            }
+        },
+        watch: {
+            portals: {
+                handler() {
+                    store.set('portals', this.portals)
+                },
+                deep: true
             }
         }
     }
