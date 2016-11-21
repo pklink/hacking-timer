@@ -36,7 +36,7 @@
                     <div class="column is-12">
                         <progress class="progress is-medium" :value="timer" :max="countdown">{{ timer / countdown / 100 }}%</progress>
                     </div>
-                    <div class="column has-text-right">
+                    <div class="column is-12 has-text-right">
                         <span>{{ countdown - timer }}s remaining</span>
                     </div>
                 </div>
