@@ -5,17 +5,11 @@
 class Notifier {
 
     constructor() {
-        this.isGranted = false
-
-        Notification.requestPermission().then((permission) => {
-            if (permission === 'granted') {
-                this.isGranted = true
-            }
-        })
+        Notification.requestPermission()
     }
 
     alert(msg) {
-        if (this.isGranted) {
+        if (Notification.permission === 'granted') {
             new Notification('Hacking Timer', { body: msg })
         } else {
             alert(msg)
