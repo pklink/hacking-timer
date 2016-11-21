@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "heartbeats": "^5.0.1",
+    "number-to-words": "^1.2.3",
     "pretty-ms": "^2.1.0",
     "vue": "^2.0.1"
   },

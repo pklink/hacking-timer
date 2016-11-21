@@ -1,5 +1,27 @@
 <template>
     <div class="container">
+        <div class="columns" v-show="showHeader && !editMode">
+            <div class="column is-narrow">
+                <h2 class="title">{{ name }}</h2>
+            </div>
+            <div class="column">
+                <a class="button is-link" @click="enableEditMode()">
+                    <span class="icon is-small">
+                      <i class="fa fa-pencil"></i>
+                    </span>
+                    <span>Edit</span>
+                </a>
+                <a class="button is-link" @click="deletePortal()">
+                    <span class="icon is-small">
+                      <i class="fa fa-trash"></i>
+                    </span>
+                    <span>Delete</span>
+                </a>
+            </div>
+        </div>
+        <div class="columns" v-show="editMode">
+            <edit-form v-on:cancel="disableEditMode()" v-on:save="disableEditMode()" v-model="name"></edit-form>
+        </div>
         <div class="columns">
             <div class="column">
                 <mod title="Heat Sink #1" v-model="heatSinks[0]"></mod>
@@ -17,15 +39,15 @@
         <div class="columns">
             <div class="column">
                 <a class="button is-primary is-medium is-fullwidth" @click="start()" v-show="!isRunning">
-                            <span class="icon">
-                                <i class="fa fa-clock-o"></i>
-                            </span>
+                    <span class="icon">
+                        <i class="fa fa-clock-o"></i>
+                    </span>
                     <span>Start Timer</span>
                 </a>
                 <a class="button is-primary is-medium is-fullwidth" @click="cancel()" v-show="isRunning">
-                            <span class="icon">
-                                <i class="fa fa-clock-o"></i>
-                            </span>
+                    <span class="icon">
+                        <i class="fa fa-clock-o"></i>
+                    </span>
                     <span>Cancel Timer</span>
                 </a>
             </div>
@@ -45,11 +67,12 @@
     import heartbeats from 'heartbeats'
     import prettyMs from 'pretty-ms'
     import Notifier from '../modules/Notifier'
+    import EditForm from './portal/Form'
     import Mod from './portal/Mod'
 
     export default {
         components: {
-            Mod
+            EditForm, Mod
         },
         computed: {
             remaining() {
@@ -64,7 +87,9 @@
                 intervalId: 0,
                 isRunning: false,
                 notifier: new Notifier(),
-                heart: heartbeats.createHeart(1000)
+                heart: heartbeats.createHeart(1000),
+                editMode: false,
+                name: this.initName
             }
         },
         methods: {
@@ -90,6 +115,15 @@
                 // reset timer
                 this.timer = 0
             },
+            deletePortal() {
+                this.$emit('delete')
+            },
+            disableEditMode() {
+                this.editMode = false
+            },
+            enableEditMode() {
+                this.editMode = true
+            },
             start() {
                 // calculate countdown
                 this.calculate()
@@ -108,6 +142,17 @@
                 // flag timer as running
                 this.isRunning = true
             }
+        },
+        props: {
+            initName: {
+                type: String,
+                default: 'Portal'
+            },
+            showHeader: {
+                type: Boolean,
+                default: false
+            }
         }
+
     }
 </script>
