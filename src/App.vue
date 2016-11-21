@@ -46,8 +46,10 @@
             <div class="container">
                 <div class="content has-text-centered">
                     <p>
-                        <strong>Hacking Timer for Ingress</strong> by <a href="https://einself.net">Pierre Klink</a>.
-                        The source code is licensed <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+                        <strong>Hacking Timer for Ingress 1.0.0</strong> by <a href="https://einself.net">Pierre Klink</a>.
+                    </p>
+                    <p>
+                        Based on <a href="https://vuejs.org/">Vue.js</a> and <a href="http://bulma.io/">Bulma</a>.
                     </p>
                     <p>
                         <a class="icon" href="https://github.com/pklink/bulma">
