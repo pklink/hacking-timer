@@ -12,6 +12,7 @@
   "dependencies": {
     "bulma": "^0.2.3",
     "heartbeats": "^5.0.1",
+    "pretty-ms": "^2.1.0",
     "vue": "^2.0.1"
   },
   "devDependencies": {

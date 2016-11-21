@@ -37,7 +37,7 @@
                         <progress class="progress is-medium" :value="timer" :max="countdown">{{ timer / countdown / 100 }}%</progress>
                     </div>
                     <div class="column is-12 has-text-right">
-                        <span>{{ countdown - timer }}s remaining</span>
+                        <span>{{ remaining }} remaining</span>
                     </div>
                 </div>
             </div>
@@ -61,6 +61,7 @@
 </template>
 <script>
     import heartbeats from 'heartbeats'
+    import prettyMs from 'pretty-ms'
     import Notifier from './modules/Notifier'
     import Mod from './components/Mod'
 
@@ -68,6 +69,11 @@
         name: 'app',
         components: {
             Mod
+        },
+        computed: {
+            remaining() {
+                return prettyMs((this.countdown - this.timer) * 1000)
+            }
         },
         data() {
             return {
