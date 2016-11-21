@@ -2,7 +2,7 @@
     <div class="container">
         <div class="columns" v-show="showHeader && !editMode">
             <div class="column is-narrow">
-                <h2 class="title">{{ name }}</h2>
+                <h2 class="title">{{ portal.name }}</h2>
             </div>
             <div class="column">
                 <a class="button is-link" @click="enableEditMode()">
@@ -20,20 +20,20 @@
             </div>
         </div>
         <div class="columns" v-show="editMode">
-            <edit-form v-on:cancel="disableEditMode()" v-on:save="disableEditMode()" v-model="name"></edit-form>
+            <edit-form v-on:cancel="disableEditMode()" v-on:save="disableEditMode()" v-model="portal.name"></edit-form>
         </div>
         <div class="columns">
             <div class="column">
-                <mod title="Heat Sink #1" v-model="heatSinks[0]"></mod>
+                <mod title="Heat Sink #1" v-model="portal.mods[0]"></mod>
             </div>
             <div class="column">
-                <mod title="Heat Sink #2" v-model="heatSinks[1]"></mod>
+                <mod title="Heat Sink #2" v-model="portal.mods[1]"></mod>
             </div>
             <div class="column">
-                <mod title="Heat Sink #3" v-model="heatSinks[2]"></mod>
+                <mod title="Heat Sink #3" v-model="portal.mods[2]"></mod>
             </div>
             <div class="column">
-                <mod title="Heat Sink #4" v-model="heatSinks[3]"></mod>
+                <mod title="Heat Sink #4" v-model="portal.mods[3]"></mod>
             </div>
         </div>
         <div class="columns">
@@ -81,10 +81,8 @@
         },
         data() {
             return {
-                heatSinks: [0, 0, 0, 0],
                 timer: 0,
                 countdown: 300,
-                intervalId: 0,
                 isRunning: false,
                 notifier: new Notifier(),
                 heart: heartbeats.createHeart(1000),
@@ -94,16 +92,7 @@
         },
         methods: {
             calculate() {
-                const heatSinks = this.heatSinks.slice(0)
-                const bonus = heatSinks.sort().reverse().reduce((pre, cur, index) => {
-                    if (index === 0) {
-                        return 1 - (cur / 100)
-                    }
-
-                    return pre * (1 - (cur / 100 / 2))
-                }, 0)
-
-                this.countdown = Math.ceil(300 * bonus)
+                this.countdown = this.portal.cooldown
             },
             cancel() {
                 // stop timer
@@ -129,7 +118,7 @@
                 this.calculate()
 
                 // start timer
-                this.intervalId = this.heart.createEvent(1, () => {
+                this.heart.createEvent(1, () => {
                     this.timer += 1
 
                     // check if portal is ready
@@ -144,9 +133,9 @@
             }
         },
         props: {
-            initName: {
-                type: String,
-                default: 'Portal'
+            portal: {
+                type: Object,
+                requred: true
             },
             showHeader: {
                 type: Boolean,

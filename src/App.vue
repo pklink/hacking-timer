@@ -21,17 +21,17 @@
                 </nav>
             </div>
         </section>
-        <section class="section" v-for="(portal, index) in portals">
-            <portal :show-header="portals.length > 1" :init-name="getPortalName(index+1)"></portal>
+        <section class="section" v-for="portal in portals">
+            <portal :show-header="portals.length > 1" :portal="portal"></portal>
         </section>
         <info-footer></info-footer>
     </div>
 </template>
 
 <script>
-    import numberConverter from 'number-to-words'
     import InfoFooter from './components/InfoFooter'
     import Portal from './components/Portal'
+    import PortalModel from './models/Portal'
 
     export default {
         name: 'app',
@@ -40,15 +40,12 @@
         },
         data() {
             return {
-                portals: [0]
+                portals: [new PortalModel()]
             }
         },
         methods: {
             addPortal() {
-                this.portals.push(Symbol('portal'))
-            },
-            getPortalName(number) {
-                return `${numberConverter.toOrdinal(number)} Portal`
+                this.portals.push(new PortalModel())
             }
         }
     }

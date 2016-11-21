@@ -4,10 +4,10 @@
         <div class="control">
             <span class="select is-fullwidth">
                 <select v-bind:value="value" v-on:input="update($event.target.value)">
-                    <option value="0">None</option>
-                    <option value="20">Common</option>
-                    <option value="50">Rare</option>
-                    <option value="70">Very Rare</option>
+                    <option value="0" :selected="this.value == 0">None</option>
+                    <option value="20" :selected="this.value == 20">Common</option>
+                    <option value="50" :selected="this.value == 50">Rare</option>
+                    <option value="70" :selected="this.value == 70">Very Rare</option>
                 </select>
                 <span>{{ model }}</span>
             </span>
