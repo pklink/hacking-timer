@@ -5,11 +5,13 @@
 class Notifier {
 
     constructor() {
-        Notification.requestPermission()
+        if (window.Notification) {
+            Notification.requestPermission()
+        }
     }
 
     alert(msg) {
-        if (Notification.permission === 'granted') {
+        if (window.Notification && Notification.permission === 'granted') {
             new Notification('Hacking Timer', { body: msg })
         } else {
             alert(msg)
