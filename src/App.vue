@@ -52,7 +52,7 @@
                         Based on <a href="https://vuejs.org/">Vue.js</a> and <a href="http://bulma.io/">Bulma</a>.
                     </p>
                     <p>
-                        <a class="icon" href="https://github.com/pklink/bulma">
+                        <a class="icon" href="https://github.com/pklink/hacking-timer">
                             <i class="fa fa-github"></i>
                         </a>
                     </p>
