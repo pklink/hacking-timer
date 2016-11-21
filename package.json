@@ -1,6 +1,6 @@
 {
   "name": "hacking-timer",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Hacking Reminder for Ingress",
   "author": "Pierre Klink <dev@einself.net>",
   "private": true,

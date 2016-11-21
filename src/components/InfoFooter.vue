@@ -3,7 +3,7 @@
         <div class="container">
             <div class="content has-text-centered">
                 <p>
-                    <strong>Hacking Timer for Ingress 1.0.2</strong> by <a href="https://einself.net">Pierre Klink</a>.
+                    <strong>Hacking Timer for Ingress 1.1.0</strong> by <a href="https://einself.net">Pierre Klink</a>.
                 </p>
                 <p>
                     Based on <a href="https://vuejs.org/">Vue.js</a> and <a href="http://bulma.io/">Bulma</a>.
