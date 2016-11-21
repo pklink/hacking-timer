@@ -2,7 +2,7 @@
     <div>
         <section class="section">
             <div class="container">
-                <div class="columns is-mobile">
+                <div class="columns">
                     <div class="column">
                         <mod title="Heat Sink #1" v-model="heatSinks[0]"></mod>
                     </div>
