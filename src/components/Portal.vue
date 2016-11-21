@@ -11,7 +11,7 @@
                     </span>
                     <span>Edit</span>
                 </a>
-                <a class="button is-link" @click="deletePortal()">
+                <a class="button is-link" @click="remove()">
                     <span class="icon is-small">
                       <i class="fa fa-trash"></i>
                     </span>
@@ -104,14 +104,14 @@
                 // reset timer
                 this.timer = 0
             },
-            deletePortal() {
-                this.$emit('delete')
-            },
             disableEditMode() {
                 this.editMode = false
             },
             enableEditMode() {
                 this.editMode = true
+            },
+            remove() {
+                this.$emit('remove')
             },
             start() {
                 // calculate countdown
