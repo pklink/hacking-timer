@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "bulma": "^0.2.3",
-    "vue": "^2.0.1",
-    "worker-timers": "^2.0.6"
+    "heartbeats": "^5.0.1",
+    "vue": "^2.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",

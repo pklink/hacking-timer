@@ -60,7 +60,7 @@
     </div>
 </template>
 <script>
-    import { setInterval, clearInterval } from 'worker-timers'
+    import heartbeats from 'heartbeats'
     import Notifier from './modules/Notifier'
     import Mod from './components/Mod'
 
@@ -76,7 +76,8 @@
                 countdown: 300,
                 intervalId: 0,
                 isRunning: false,
-                notifier: new Notifier()
+                notifier: new Notifier(),
+                heart: heartbeats.createHeart(1000)
             }
         },
         methods: {
@@ -93,8 +94,8 @@
                 this.countdown = Math.round(300 * bonus)
             },
             cancel() {
-                // remove interval
-                clearInterval(this.intervalId)
+                // stop timer
+                this.heart.killAllEvents()
 
                 // flag timer as not running
                 this.isRunning = false
@@ -107,7 +108,7 @@
                 this.calculate()
 
                 // start timer
-                this.intervalId = setInterval(() => {
+                this.intervalId = this.heart.createEvent(1, () => {
                     this.timer += 1
 
                     // check if portal is ready

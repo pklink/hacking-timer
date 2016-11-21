@@ -23,6 +23,7 @@ module.exports = {
         'comma-dangle': ['error', 'never'],
         'semi': ['error', 'never'],
         'indent': ['error', 4],
+        'class-methods-use-this': ['off'],
         'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
     }
 }
