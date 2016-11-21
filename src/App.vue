@@ -61,6 +61,7 @@
 </template>
 <script>
     import { setInterval, clearInterval } from 'worker-timers'
+    import Notifier from './modules/Notifier'
     import Mod from './components/Mod'
 
     export default {
@@ -74,7 +75,8 @@
                 timer: 0,
                 countdown: 300,
                 intervalId: 0,
-                isRunning: false
+                isRunning: false,
+                notifier: new Notifier()
             }
         },
         methods: {
@@ -108,7 +110,9 @@
                 this.intervalId = setInterval(() => {
                     this.timer += 1
 
+                    // check if portal is ready
                     if (this.timer === this.countdown) {
+                        this.notifier.alert('Portal is cooled down!')
                         this.cancel()
                     }
                 }, 1000)
