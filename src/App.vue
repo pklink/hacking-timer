@@ -91,7 +91,7 @@
                     return pre * (1 - (cur / 100 / 2))
                 }, 0)
 
-                this.countdown = Math.round(300 * bonus)
+                this.countdown = Math.ceil(300 * bonus)
             },
             cancel() {
                 // stop timer
