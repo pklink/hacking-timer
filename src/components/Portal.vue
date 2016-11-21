@@ -40,15 +40,13 @@
             <div class="column">
                 <a class="button is-primary is-medium is-fullwidth" @click="start()" v-show="!isRunning">
                     <span class="icon">
-                        <i class="fa fa-clock-o"></i>
+                        <i class="fa fa-play"></i>
                     </span>
-                    <span>Start Timer</span>
                 </a>
                 <a class="button is-primary is-medium is-fullwidth" @click="cancel()" v-show="isRunning">
                     <span class="icon">
-                        <i class="fa fa-clock-o"></i>
+                        <i class="fa fa-stop"></i>
                     </span>
-                    <span>Cancel Timer</span>
                 </a>
             </div>
         </div>
