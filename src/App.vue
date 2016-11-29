@@ -22,7 +22,7 @@
             </div>
         </section>
         <section class="section" v-for="portal in portals">
-            <portal :show-header="portals.length > 1" :portal="portal" @remove="remove(portal)"></portal>
+            <portal :is-deletable="portals.length > 1" :portal="portal" @remove="remove(portal)"></portal>
         </section>
         <info-footer></info-footer>
     </div>

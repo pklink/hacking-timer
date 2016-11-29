@@ -10,7 +10,6 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
-    "heartbeats": "^5.0.1",
     "pretty-ms": "^2.1.0",
     "store": "^1.3.20",
     "vue": "^2.0.1"
